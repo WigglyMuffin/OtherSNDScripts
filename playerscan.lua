@@ -60,7 +60,7 @@ local function PerformSearch(command, name)
         total_checks = total_checks + 1
         local current_count = GetNodeText("SocialList", 3)
 
-        if string.match(current_count, "^19[7-9]/200$") or current_count == "200/200" then -- Checks between 197-200 to be considered max count
+        if string.match(current_count, "^19[5-9]/200$") or current_count == "200/200" then -- Checks between 197-200 to be considered max count
             return true -- Max player count reached
         elseif current_count == previous_count then
             count_difference = count_difference + 1
@@ -80,7 +80,7 @@ local function SearchWorld(world)
         Echo("Searching on current world")
     end
 
-    local levels = { "1-20", "21-40", "41-60", "61-80", "81-100" }
+    local levels = { "1-15", "16-30", "31-45", "46-60", "61-75", "76-90", "91-99", "100" }
 
     for i = 97, 122 do -- ASCII characters for lowercase a-z
         local letter = string.char(i)
@@ -91,7 +91,10 @@ local function SearchWorld(world)
 
             -- Try each level individually if the full combination hits max
             for _, level in ipairs(levels) do
-                PerformSearch("/sea jp en de fr " .. level, letter)
+                Sleep(1.5)
+                if not PerformSearch("/sea jp en de fr " .. level, letter) then
+                    Echo("Search for level range " .. level .. " with letter '" .. letter .. "' did not hit max count.")
+                end
             end
         end
     end
