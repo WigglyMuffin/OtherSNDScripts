@@ -4,8 +4,7 @@ The Playersearch script uses an external functions file, instructions to install
 
 Ensure you have the following plugins installed and enabled:
 
-- Lifestream
-- Playerscope
+- Lifestream (If using world hopping setting)
 - Something Need Doing (Expanded Edition)
 
 ## Installation
